@@ -13,6 +13,8 @@
     "@x402/core": "latest",
     "@x402/evm": "latest",
     "@x402/express": "latest",
-    "@x402/extensions": "latest"
+    "@x402/extensions": "latest",
+    "@x402/fetch": "^2.13.0",
+    "viem": "^2.51.3"
   }
 }
