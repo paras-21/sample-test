@@ -31,6 +31,7 @@ try {
 // Config
 // ---------------------------------------------------------------------------
 const PORT = process.env.PORT || 4021;
+const HOST = (process.env.HOST || `http://localhost:${process.env.PORT || 4021}`).replace(/^http:\/\//, "https://");
 const PAY_TO = "0x3b9B597Add127eadf6D0d7cd20C3aaaC4ee94a96";
 const NETWORK = "eip155:84532"; // Base Sepolia
 const PRICE = "$0.001";
@@ -91,6 +92,9 @@ const resourceServer = new x402ResourceServer(facilitatorClient).register(
 // ---------------------------------------------------------------------------
 const app = express();
 app.use(express.json());
+
+// Trust Render's reverse proxy so req.protocol returns 'https'
+app.set("trust proxy", 1);
 
 // ---------------------------------------------------------------------------
 // x402 payment middleware
